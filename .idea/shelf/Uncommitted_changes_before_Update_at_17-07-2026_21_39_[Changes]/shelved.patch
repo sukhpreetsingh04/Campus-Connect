@@ -1,0 +1,237 @@
+Index: app/src/main/java/com/sukhpreet/campusconect/MainActivity.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.sukhpreet.campusconect\r\n\r\nimport android.os.Bundle\r\nimport androidx.activity.ComponentActivity\r\nimport androidx.activity.compose.setContent\r\nimport androidx.activity.enableEdgeToEdge\r\nimport androidx.compose.foundation.layout.Column\r\nimport androidx.compose.foundation.layout.fillMaxSize\r\nimport androidx.compose.foundation.layout.padding\r\nimport androidx.compose.material3.Scaffold\r\nimport androidx.compose.ui.Modifier\r\nimport com.sukhpreet.campusconect.ui.theme.CampusConectTheme\r\n\r\nclass MainActivity : ComponentActivity() {\r\n    override fun onCreate(savedInstanceState: Bundle?) {\r\n        super.onCreate(savedInstanceState)\r\n        enableEdgeToEdge()\r\n        setContent {\r\n            CampusConectTheme {\r\n                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->\r\n                    Column(modifier = Modifier.padding(innerPadding)) {\r\n                        SplashScreen()\r\n                    }\r\n                }\r\n            }\r\n        }\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/sukhpreet/campusconect/MainActivity.kt b/app/src/main/java/com/sukhpreet/campusconect/MainActivity.kt
+--- a/app/src/main/java/com/sukhpreet/campusconect/MainActivity.kt	(revision 832ddaec897a81b69c1d2c21a9f964789eed5d1f)
++++ b/app/src/main/java/com/sukhpreet/campusconect/MainActivity.kt	(date 1784292318885)
+@@ -19,7 +19,8 @@
+             CampusConectTheme {
+                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                     Column(modifier = Modifier.padding(innerPadding)) {
+-                        SplashScreen()
++//                        SplashScreen()
++                        WelcomeScreen()
+                     }
+                 }
+             }
+Index: app/src/main/java/com/sukhpreet/campusconect/QuickAction.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/sukhpreet/campusconect/QuickAction.kt b/app/src/main/java/com/sukhpreet/campusconect/QuickAction.kt
+new file mode 100644
+--- /dev/null	(date 1784303741293)
++++ b/app/src/main/java/com/sukhpreet/campusconect/QuickAction.kt	(date 1784303741293)
+@@ -0,0 +1,43 @@
++package com.sukhpreet.campusconect
++
++import androidx.compose.material.icons.Icons
++import androidx.compose.material.icons.automirrored.filled.Article
++import androidx.compose.material.icons.filled.Event
++import androidx.compose.material.icons.filled.Forum
++import androidx.compose.material.icons.filled.Groups
++import androidx.compose.ui.graphics.Color
++import androidx.compose.ui.graphics.vector.ImageVector
++
++data class QuickAction(
++    val icon: ImageVector,
++    val title: String,
++    val subtitle: String,
++    val tint: Color
++)
++
++val actions = listOf(
++    QuickAction(
++        icon = Icons.AutoMirrored.Filled.Article,
++        title = "Stay Updated",
++        subtitle = "Latest campus news",
++        tint = Color(0xFFC64ED8)
++    ),
++    QuickAction(
++        icon = Icons.Filled.Event,
++        title = "Events",
++        subtitle = "Discover events",
++        tint = Color(0xFF4D6FFF)
++    ),
++    QuickAction(
++        icon = Icons.Filled.Groups,
++        title = "Connect",
++        subtitle = "Connect with peers",
++        tint = Color(0xFF4D6FFF)
++    ),
++    QuickAction(
++        icon = Icons.Filled.Forum,
++        title = "Engage",
++        subtitle = "Engage in discussions",
++        tint = Color(0xFF4D6FFF)
++    )
++)
+\ No newline at end of file
+Index: app/src/main/java/com/sukhpreet/campusconect/WelcomeScreen.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/sukhpreet/campusconect/WelcomeScreen.kt b/app/src/main/java/com/sukhpreet/campusconect/WelcomeScreen.kt
+new file mode 100644
+--- /dev/null	(date 1784304456552)
++++ b/app/src/main/java/com/sukhpreet/campusconect/WelcomeScreen.kt	(date 1784304456552)
+@@ -0,0 +1,152 @@
++package com.sukhpreet.campusconect
++
++import androidx.compose.foundation.background
++import androidx.compose.foundation.layout.Arrangement
++import androidx.compose.foundation.layout.Column
++import androidx.compose.foundation.layout.Row
++import androidx.compose.foundation.layout.Spacer
++import androidx.compose.foundation.layout.fillMaxHeight
++import androidx.compose.foundation.layout.fillMaxSize
++import androidx.compose.foundation.layout.fillMaxWidth
++import androidx.compose.foundation.layout.height
++import androidx.compose.foundation.layout.padding
++import androidx.compose.foundation.layout.size
++import androidx.compose.foundation.layout.width
++import androidx.compose.foundation.shape.RoundedCornerShape
++import androidx.compose.material3.Card
++import androidx.compose.material3.VerticalDivider
++import androidx.compose.material3.Icon
++import androidx.compose.material3.Text
++import androidx.compose.runtime.Composable
++import androidx.compose.ui.Alignment
++import androidx.compose.ui.Modifier
++import androidx.compose.ui.graphics.Brush
++import androidx.compose.ui.graphics.Color
++import androidx.compose.ui.text.TextStyle
++import androidx.compose.ui.text.font.FontWeight
++import androidx.compose.ui.unit.dp
++import androidx.compose.ui.unit.sp
++import com.sukhpreet.campusconect.ui.theme.Poppins
++import androidx.compose.material3.CardDefaults
++import androidx.compose.ui.graphics.vector.ImageVector
++import androidx.compose.ui.text.style.TextAlign
++import androidx.compose.ui.unit.Dp
++
++@Composable
++fun WelcomeScreen() {
++    Column(
++        modifier = Modifier
++            .fillMaxSize()
++            .background(color = Color(0xFFE3F2FD)),
++        verticalArrangement = Arrangement.Top,
++        horizontalAlignment = Alignment.CenterHorizontally
++    ) {
++        Text(
++            text = "Campus",
++            fontFamily = Poppins,
++            color = Color(0xFF1E245B),
++            fontWeight = FontWeight.ExtraBold,
++            fontSize = 40.sp,
++        )
++        Text(
++            text = "Connect",
++            fontFamily = Poppins,
++            style = TextStyle(
++                Brush.horizontalGradient(
++                    colors = listOf(
++                        Color(0xFF4D6FFF),
++                        Color(0xFF6A5BFF),
++                        Color(0xFFC64ED8)
++                    )
++                )
++            ),
++            fontWeight = FontWeight.ExtraBold,
++            fontSize = 40.sp
++        )
++
++        Spacer(modifier = Modifier.height(16.dp))
++
++        Text(text = "Your campus. Your Community.", fontFamily = Poppins, color = Color.Black)
++        Text(text = "All in One Place.", fontFamily = Poppins, color = Color(0xFF4D6FFF))
++
++        Spacer(modifier = Modifier.weight(1f))
++
++        QuickActionsCard(
++            modifier = Modifier
++                .fillMaxWidth()
++                .padding(start = 10.dp, end = 10.dp, bottom = 200.dp)
++        )
++    }
++}
++
++@Composable
++fun QuickActionsCard(modifier: Modifier = Modifier) {
++    Card(
++        modifier = modifier,
++        colors = CardDefaults.cardColors(
++            containerColor = Color.White,
++            contentColor = Color.Black
++        ),
++        shape = RoundedCornerShape(16.dp),
++        border = CardDefaults.outlinedCardBorder(enabled = true),
++        elevation = CardDefaults.cardElevation(defaultElevation = 10.dp)
++    ) {
++        Row(
++            modifier = Modifier
++                .fillMaxWidth()
++                .padding(vertical = 20.dp),
++            verticalAlignment = Alignment.CenterVertically
++        ) {
++
++            actions.forEachIndexed { index, action ->
++
++                QuickActionItem(
++                    modifier = Modifier.weight(1f),
++                    icon = action.icon,
++                    iconSize = 32.dp,
++                    title = action.title,
++                    subtitle = action.subtitle,
++                    tint = action.tint
++                )
++
++                if (index != actions.lastIndex) {
++                    VerticalDivider(
++                        modifier = Modifier
++                            .fillMaxHeight(0.55f)
++                            .width(1.dp),
++                        color = Color(0xFFEAEAEA)
++                    )
++                }
++            }
++        }
++    }
++}
++
++@Composable
++fun QuickActionItem(
++    modifier: Modifier = Modifier,
++    icon: ImageVector,
++    iconSize: Dp = 28.dp,
++    title: String,
++    subtitle: String,
++    tint: Color
++) {
++    Column(
++        modifier = modifier
++            .padding(start = 8.dp, end = 8.dp),
++        horizontalAlignment = Alignment.CenterHorizontally
++    ) {
++        Icon(
++            imageVector = icon,
++            contentDescription = null,
++            tint = tint,
++            modifier = Modifier.size(iconSize),
++        )
++        Spacer(Modifier.height(8.dp))
++        Text(
++            text = title,
++            textAlign = TextAlign.Center
++        )
++        Text(text = subtitle, textAlign = TextAlign.Center, fontSize = 12.sp)
++    }
++}
+\ No newline at end of file
