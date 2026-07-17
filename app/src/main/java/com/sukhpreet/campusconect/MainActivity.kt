@@ -19,7 +19,8 @@ class MainActivity : ComponentActivity() {
             CampusConectTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Column(modifier = Modifier.padding(innerPadding)) {
-                        SplashScreen()
+//                        SplashScreen()
+                        WelcomeScreen()
                     }
                 }
             }
