@@ -1,4 +1,4 @@
-package com.sukhpreet.campusconect
+package com.sukhpreet.campusconect.components
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost

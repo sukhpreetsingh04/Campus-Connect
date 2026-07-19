@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
+import com.sukhpreet.campusconect.components.Navigation
 import com.sukhpreet.campusconect.ui.theme.CampusConectTheme
 
 class MainActivity : ComponentActivity() {

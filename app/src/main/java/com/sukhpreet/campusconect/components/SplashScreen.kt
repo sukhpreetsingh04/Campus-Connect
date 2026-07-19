@@ -1,4 +1,4 @@
-package com.sukhpreet.campusconect
+package com.sukhpreet.campusconect.components
 
 import android.view.animation.OvershootInterpolator
 import androidx.compose.animation.core.Animatable

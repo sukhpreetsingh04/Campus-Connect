@@ -1,4 +1,4 @@
-package com.sukhpreet.campusconect
+package com.sukhpreet.campusconect.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -82,11 +82,9 @@ fun WelcomeScreen() {
 
         Spacer(modifier = Modifier.weight(2f))
 
-        QuickActionsCard(
-            modifier = Modifier
+        QuickActionsCard(modifier = Modifier
                 .fillMaxWidth()
-                .padding(start = 10.dp, end = 10.dp)
-        )
+                .padding(start = 10.dp, end = 10.dp))
 
         Spacer(modifier = Modifier.height(24.dp))
 
@@ -124,73 +122,5 @@ fun WelcomeScreen() {
                 )
             }
         }
-    }
-}
-
-@Composable
-fun QuickActionsCard(modifier: Modifier = Modifier) {
-    Card(
-        modifier = modifier,
-        colors = CardDefaults.cardColors(
-            containerColor = Color.White,
-            contentColor = Color.Black
-        ),
-        shape = RoundedCornerShape(16.dp),
-        elevation = CardDefaults.cardElevation(defaultElevation = 10.dp)
-    ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(vertical = 20.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-
-            actions.forEachIndexed { index, action ->
-
-                QuickActionItem(
-                    modifier = Modifier.weight(1f),
-                    icon = action.icon,
-                    iconSize = 32.dp,
-                    title = action.title,
-                    tint = action.tint
-                )
-
-                if (index != actions.lastIndex) {
-                    VerticalDivider(
-                        modifier = Modifier
-                            .fillMaxHeight(0.55f)
-                            .width(1.dp),
-                        color = Color(0xFFEAEAEA)
-                    )
-                }
-            }
-        }
-    }
-}
-
-@Composable
-fun QuickActionItem(
-    modifier: Modifier = Modifier,
-    icon: ImageVector,
-    iconSize: Dp = 28.dp,
-    title: String,
-    tint: Color
-) {
-    Column(
-        modifier = modifier
-            .padding(start = 8.dp, end = 8.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Icon(
-            imageVector = icon,
-            contentDescription = null,
-            tint = tint,
-            modifier = Modifier.size(iconSize),
-        )
-        Spacer(Modifier.height(8.dp))
-        Text(
-            text = title,
-            textAlign = TextAlign.Center
-        )
     }
 }
