@@ -1,4 +1,4 @@
-package com.sukhpreet.campusconect.components
+package com.sukhpreet.campusconect.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -30,6 +30,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.sukhpreet.campusconect.ui.theme.Poppins
 import androidx.compose.ui.draw.clip
+import com.sukhpreet.campusconect.components.QuickActionsCard
 
 @Composable
 fun WelcomeScreen() {
@@ -74,9 +75,11 @@ fun WelcomeScreen() {
 
         Spacer(modifier = Modifier.weight(2f))
 
-        QuickActionsCard(modifier = Modifier
+        QuickActionsCard(
+            modifier = Modifier
                 .fillMaxWidth()
-                .padding(start = 10.dp, end = 10.dp))
+                .padding(start = 10.dp, end = 10.dp)
+        )
 
         Spacer(modifier = Modifier.height(24.dp))
 
