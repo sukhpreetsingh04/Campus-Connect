@@ -20,7 +20,8 @@ class MainActivity : ComponentActivity() {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Column(modifier = Modifier.padding(innerPadding)) {
 //                        SplashScreen()
-                        WelcomeScreen()
+//                        WelcomeScreen()
+                        Navigation()
                     }
                 }
             }
