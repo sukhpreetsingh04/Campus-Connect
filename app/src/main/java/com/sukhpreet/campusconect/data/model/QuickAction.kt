@@ -1,4 +1,4 @@
-package com.sukhpreet.campusconect.components
+package com.sukhpreet.campusconect.data.model
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.Article
