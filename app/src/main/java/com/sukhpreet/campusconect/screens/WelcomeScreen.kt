@@ -1,6 +1,8 @@
 package com.sukhpreet.campusconect.screens
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
+import androidx.compose.ui.res.stringResource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -30,10 +32,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.sukhpreet.campusconect.ui.theme.Poppins
 import androidx.compose.ui.draw.clip
+import com.sukhpreet.campusconect.R
+import com.sukhpreet.campusconect.components.PrimaryButton
 import com.sukhpreet.campusconect.components.QuickActionsCard
+import com.sukhpreet.campusconect.components.SecondaryButton
 
 @Composable
 fun WelcomeScreen() {
+    val appFontFamily = Poppins;
 
     val buttonGradient = Brush.horizontalGradient(
         colors = listOf(
@@ -53,16 +59,16 @@ fun WelcomeScreen() {
     ) {
 
         Text(
-            text = "Campus",
-            fontFamily = Poppins,
+            text = stringResource(R.string.app_name_first),
+            fontFamily = appFontFamily,
             color = Color(0xFF1E245B),
             fontWeight = FontWeight.ExtraBold,
-            fontSize = 40.sp,
+            fontSize = 40.sp
         )
 
         Text(
-            text = "Connect",
-            fontFamily = Poppins,
+            text = stringResource(R.string.app_name_second),
+            fontFamily = appFontFamily,
             style = TextStyle(
                 buttonGradient
             ),
@@ -70,8 +76,17 @@ fun WelcomeScreen() {
             fontSize = 40.sp
         )
 
-        Text(text = "Your campus. Your Community.", fontFamily = Poppins, color = Color.Black)
-        Text(text = "All in One Place.", fontFamily = Poppins, color = Color(0xFF4D6FFF))
+        Text(
+            text = stringResource(R.string.welcome_subtitle_1),
+            fontFamily = appFontFamily,
+            color = Color.Black
+        )
+
+        Text(
+            text = stringResource(R.string.welcome_subtitle_2),
+            fontFamily = appFontFamily,
+            color = Color(0xFF4D6FFF)
+        )
 
         Spacer(modifier = Modifier.weight(2f))
 
@@ -83,39 +98,7 @@ fun WelcomeScreen() {
 
         Spacer(modifier = Modifier.height(24.dp))
 
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(
-                    start = 10.dp,
-                    end = 10.dp,
-                    bottom = 40.dp
-                )
-                .clip(RoundedCornerShape(16.dp))
-                .background(buttonGradient, RoundedCornerShape(16.dp))
-        ) {
-            Button(
-                onClick = { /*TODO*/ },
-                contentPadding = PaddingValues(16.dp),
-                modifier = Modifier
-                    .fillMaxWidth(),
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = Color.Transparent,
-                    contentColor = Color.White
-                ),
-                shape = RoundedCornerShape(16.dp),
-                elevation = ButtonDefaults.buttonElevation(
-                    defaultElevation = 0.dp
-                )
-            ) {
-                Text(text = "Get Started", fontFamily = Poppins, fontSize = 20.sp)
-                Spacer(Modifier.width(8.dp))
-                Icon(
-                    imageVector = Icons.AutoMirrored.Filled.ArrowForward,
-                    contentDescription = null,
-                    modifier = Modifier.size(20.dp)
-                )
-            }
-        }
+        PrimaryButton()
+        SecondaryButton()
     }
 }

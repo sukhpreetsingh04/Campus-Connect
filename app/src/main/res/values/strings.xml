@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">CampusConect</string>
+    <string name="app_name_first">Campus</string>
+    <string name="app_name_second">Connect</string>
+    <string name="welcome_subtitle_1">Your campus. Your community.</string>
+    <string name="welcome_subtitle_2">All in One Place.</string>
+    <string name="get_started">Get Started</string>
+    <string name="already_have_account">I already have an account</string>
 </resources>
