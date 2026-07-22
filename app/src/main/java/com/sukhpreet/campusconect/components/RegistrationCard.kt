@@ -2,12 +2,10 @@ package com.sukhpreet.campusconect.components
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import com.sukhpreet.campusconect.R
 import androidx.compose.ui.res.stringResource
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -30,7 +28,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
@@ -70,123 +67,114 @@ fun RegistrationCard() {
         focusedTextColor = Color.Black
     )
 
-
-    Column(
+    Card(
         modifier = Modifier
-            .fillMaxSize(),
-        verticalArrangement = Arrangement.SpaceBetween,
-        horizontalAlignment = Alignment.CenterHorizontally
+            .fillMaxWidth()
+            .padding(15.dp),
+        colors = CardDefaults.cardColors(
+            containerColor = Color(0xFFFCFCFF),
+            contentColor = Color(0xFF1F2937)
+        ),
+        shape = RoundedCornerShape(16.dp),
+        elevation = CardDefaults.cardElevation(defaultElevation = 10.dp)
     ) {
-        Card(
+
+        Column(
             modifier = Modifier
-                .fillMaxWidth()
-                .padding(15.dp)
-                .fillMaxHeight(0.5f),
-            colors = CardDefaults.cardColors(
-                containerColor = Color(0xFFFCFCFF),
-                contentColor = Color(0xFF1F2937)
-            ),
-            shape = RoundedCornerShape(16.dp),
-            elevation = CardDefaults.cardElevation(defaultElevation = 10.dp)
+                .fillMaxSize()
+                .padding(24.dp)
+                .clickable(
+                    indication = null,
+                    interactionSource = remember { MutableInteractionSource() }
+                ) {
+                    focusManager.clearFocus()
+                }
         ) {
 
-            Column(
+            Text(
+                text = stringResource(R.string.create_an_account),
+                fontFamily = appFontFamily,
+                fontWeight = FontWeight.ExtraBold,
+                fontSize = 30.sp
+            )
+
+            Spacer(modifier = Modifier.height(6.dp))
+
+            Text(
+                text = stringResource(R.string.register_subtitle),
+                fontFamily = appFontFamily,
+                color = Color(0xFF6B7280)
+            )
+
+            Spacer(modifier = Modifier.height(28.dp))
+
+            OutlinedTextField(
+                value = userEmail,
+                onValueChange = { userEmail = it },
                 modifier = Modifier
-                    .fillMaxSize()
-                    .padding(24.dp)
-                    .clickable(
-                        indication = null,
-                        interactionSource = remember { MutableInteractionSource() }
-                    ) {
-                        focusManager.clearFocus()
-                    }
-            ) {
-
-                Text(
-                    text = stringResource(R.string.create_an_account),
-                    fontFamily = appFontFamily,
-                    fontWeight = FontWeight.ExtraBold,
-                    fontSize = 30.sp
-                )
-
-                Spacer(modifier = Modifier.height(6.dp))
-
-                Text(
-                    text = stringResource(R.string.register_subtitle),
-                    fontFamily = appFontFamily,
-                    color = Color(0xFF6B7280)
-                )
-
-                Spacer(modifier = Modifier.height(28.dp))
-
-                OutlinedTextField(
-                    value = userEmail,
-                    onValueChange = { userEmail = it },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .onFocusChanged {
-                            isFocused = it.isFocused
-                        },
-                    label = { Text("Email") },
-                    singleLine = true,
-                    colors = textFieldsColors,
-                    shape = RoundedCornerShape(12.dp),
-                    leadingIcon = {
-                        Icon(
-                            imageVector = Icons.Default.Email,
-                            contentDescription = null,
-                            tint = Color(0xFF6A5BFF)
-                        )
-                    }
-                )
-
-                Spacer(modifier = Modifier.height(16.dp))
-
-                OutlinedTextField(
-                    value = userPassword,
-                    onValueChange = { userPassword = it },
-                    visualTransformation =
-                        if (passwordVisible)
-                            VisualTransformation.None
-                        else
-                            PasswordVisualTransformation(),
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .onFocusChanged {
-                            isFocused = it.isFocused
-                        },
-                    label = { Text("Password") },
-                    singleLine = true,
-                    colors = textFieldsColors,
-                    shape = RoundedCornerShape(12.dp),
-                    leadingIcon = {
-                        Icon(
-                            imageVector = Icons.Default.Lock,
-                            contentDescription = null,
-                            tint = Color(0xFF6A5BFF)
-                        )
+                    .fillMaxWidth()
+                    .onFocusChanged {
+                        isFocused = it.isFocused
                     },
-                    trailingIcon = {
-                        IconButton(onClick = { passwordVisible = !passwordVisible }) {
-                            Icon(
-                                imageVector = if (passwordVisible)
-                                    Icons.Outlined.Visibility
-                                else
-                                    Icons.Outlined.VisibilityOff,
-                                contentDescription = if (passwordVisible)
-                                    "Hide password"
-                                else
-                                    "Show password",
-                                tint = Color(0xFF6A5BFF)
-                            )
-                        }
+                label = { Text("Email") },
+                singleLine = true,
+                colors = textFieldsColors,
+                shape = RoundedCornerShape(12.dp),
+                leadingIcon = {
+                    Icon(
+                        imageVector = Icons.Default.Email,
+                        contentDescription = null,
+                        tint = Color(0xFF4D6FFF)
+                    )
+                }
+            )
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            OutlinedTextField(
+                value = userPassword,
+                onValueChange = { userPassword = it },
+                visualTransformation =
+                    if (passwordVisible)
+                        VisualTransformation.None
+                    else
+                        PasswordVisualTransformation(),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .onFocusChanged {
+                        isFocused = it.isFocused
+                    },
+                label = { Text("Password") },
+                singleLine = true,
+                colors = textFieldsColors,
+                shape = RoundedCornerShape(12.dp),
+                leadingIcon = {
+                    Icon(
+                        imageVector = Icons.Default.Lock,
+                        contentDescription = null,
+                        tint = Color(0xFF4D6FFF)
+                    )
+                },
+                trailingIcon = {
+                    IconButton(onClick = { passwordVisible = !passwordVisible }) {
+                        Icon(
+                            imageVector = if (passwordVisible)
+                                Icons.Outlined.Visibility
+                            else
+                                Icons.Outlined.VisibilityOff,
+                            contentDescription = if (passwordVisible)
+                                "Hide password"
+                            else
+                                "Show password",
+                            tint = Color(0xFF4D6FFF)
+                        )
                     }
-                )
+                }
+            )
 
-                Spacer(modifier = Modifier.height(24.dp))
+            Spacer(modifier = Modifier.height(24.dp))
 
-                CreateAccountButton()
-            }
+            CreateAccountButton()
         }
     }
 }

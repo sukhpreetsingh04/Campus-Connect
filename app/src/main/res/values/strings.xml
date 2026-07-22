@@ -8,4 +8,6 @@
     <string name="already_have_account">I already have an account</string>
     <string name="create_an_account">Create an account</string>
     <string name="register_subtitle">It\'s free and always will be.</string>
+    <string name="register_title">Register yourself</string>
+    <string name="back">Back</string>
 </resources>
