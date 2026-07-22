@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.sukhpreet.campusconect.screens.RegisterScreen
 import com.sukhpreet.campusconect.screens.SplashScreen
 import com.sukhpreet.campusconect.screens.WelcomeScreen
 
@@ -18,7 +19,10 @@ fun Navigation() {
             SplashScreen(navController = navController)
         }
         composable("WelcomeScreen") {
-            WelcomeScreen()
+            WelcomeScreen(navController)
+        }
+        composable("RegisterScreen") {
+            RegisterScreen(navController)
         }
     }
 }

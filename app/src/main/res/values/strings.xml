@@ -6,4 +6,6 @@
     <string name="welcome_subtitle_2">All in One Place.</string>
     <string name="get_started">Get Started</string>
     <string name="already_have_account">I already have an account</string>
+    <string name="create_an_account">Create an account</string>
+    <string name="register_subtitle">It\'s free and always will be.</string>
 </resources>

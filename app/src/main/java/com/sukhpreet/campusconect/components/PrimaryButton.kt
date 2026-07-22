@@ -25,9 +25,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.sukhpreet.campusconect.ui.theme.Poppins
 import androidx.compose.ui.res.stringResource
+import androidx.navigation.NavController
 
 @Composable
-fun PrimaryButton() {
+fun PrimaryButton(navController: NavController) {
 
     val appFontFamily = Poppins;
 
@@ -51,7 +52,7 @@ fun PrimaryButton() {
             .background(buttonGradient, RoundedCornerShape(16.dp))
     ) {
         Button(
-            onClick = { /*TODO*/ },
+            onClick = { navController.navigate("RegisterScreen") },
             contentPadding = PaddingValues(16.dp),
             modifier = Modifier
                 .fillMaxWidth(),
